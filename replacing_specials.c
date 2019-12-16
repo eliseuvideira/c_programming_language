@@ -13,6 +13,9 @@ void main() {
         putchar('\\');
         putchar('b');
         break;
+      case '\\':
+        putchar('\\');
+        putchar('\\');
       default:
         putchar(c);
         break;
