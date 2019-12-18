@@ -4,7 +4,7 @@
 #define MAX_LINE_WIDTH 1000
 
 int get_line(char line[], int max_length);
-void remove_trailing(char line[], int length);
+int remove_trailing(char line[], int length);
 int append_text(char text[], int position, int max_length, char line[]);
 
 int main() {
@@ -15,8 +15,10 @@ int main() {
 
   while ((length = get_line(current_line, MAX_LINE_WIDTH)) > 0) {
     if (length > 1) {
-      remove_trailing(current_line, length);
-      text_length = append_text(text, text_length, MAX_TEXT_WIDTH, current_line);
+      length = remove_trailing(current_line, length);
+      if (length > 1) {
+        text_length = append_text(text, text_length, MAX_TEXT_WIDTH, current_line);
+      }
     }
   }
 
@@ -40,12 +42,13 @@ int get_line(char line[], int max_length) {
   return i;
 }
 
-void remove_trailing(char line[], int length) {
+int remove_trailing(char line[], int length) {
   int i;
   for (i = length - 1; i > 0 && (line[i] == ' ' || line[i] == '\t') ; --i) {
     line[i] = '\n';
     line[i + 1] = '\0';
   }
+  return i;
 }
 
 int append_text(char text[], int position, int max_length, char line[]) {
