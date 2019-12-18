@@ -13,10 +13,9 @@ int main () {
 }
 
 int power(int base, int exponent) {
-  int value = 1;
-  while (exponent > 0) {
+  int value;
+  for (value = 1; exponent > 0; --exponent) {
     value = value * base;
-    --exponent;
   }
   return value;
 }
