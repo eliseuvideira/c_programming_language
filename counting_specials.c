@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main() {
+int main() {
   int tabs = 0;
   int blanks = 0;
   int lines = 0;
@@ -21,4 +21,6 @@ void main() {
   }
 
   printf("tabs: %d\nblanks: %d\nlines: %d\n", tabs, blanks, lines);
+
+  return 0;
 }

@@ -3,7 +3,7 @@
 #define IN  1
 #define OUT 0
 
-void main() {
+int main() {
   int c, nl, nw, nc, state;
 
   state = OUT;
@@ -22,4 +22,6 @@ void main() {
     }
   }
   printf("%d %d %d\n", nl, nw, nc);
+
+  return 0;
 }

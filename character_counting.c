@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main() {
+int main() {
   long nc;
 
   nc = 0;
@@ -8,4 +8,6 @@ void main() {
     ++nc;
   }
   printf("%ld\n", nc);
+
+  return 0;
 }

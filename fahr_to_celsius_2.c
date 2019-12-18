@@ -4,11 +4,13 @@
 #define UPPER 300
 #define STEP  20
 
-void main() {
+int main() {
   int fahr;
   
   printf("fahr\tcelsius\n");
   for (fahr = UPPER; fahr >= LOWER; fahr = fahr - STEP) {
     printf("%4d\t%7.1f\n", fahr, 5.0 / 9.0 * (fahr - 32));
   }
+
+  return 0;
 }

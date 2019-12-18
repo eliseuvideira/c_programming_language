@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main() {
+int main() {
   int c, nl;
 
   nl = 0;
@@ -12,4 +12,6 @@ void main() {
   }
 
   printf("%d\n", nl);
+
+  return 0;
 }
