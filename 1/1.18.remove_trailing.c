@@ -4,7 +4,6 @@
 
 int get_line(char line[], int max_length);
 int remove_trailing(char line[], int length);
-int append_text(char text[], int position, int max_length, char line[]);
 
 int main() {
   char current_line[MAX_LINE_WIDTH];
@@ -44,13 +43,4 @@ int remove_trailing(char line[], int length) {
     line[i + 1] = '\0';
   }
   return i;
-}
-
-int append_text(char text[], int position, int max_length, char line[]) {
-  int i;
-  for (i = 0; i < max_length - 1 && line[i] != '\0'; ++i) {
-    text[position + i] = line[i];
-  }
-  text[position + i + 1] = '\0';
-  return position + i;
 }
