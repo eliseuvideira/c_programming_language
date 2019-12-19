@@ -8,9 +8,11 @@ float fahr_to_celsius(float fahr);
 
 int main() {
   float fahr;
-  printf("fahr\tcelsius\n");
+  float celsius;
+  printf("Fahr\tCelsius\n");
   for (fahr = LOWER; fahr <= UPPER; fahr += STEP) {
-    printf("%4.0f\t%7.1f\n", fahr, fahr_to_celsius(fahr));
+    celsius = fahr_to_celsius(fahr);
+    printf("%4.0f\t%7.1f\n", fahr, celsius);
   }
 }
 
