@@ -34,6 +34,8 @@ int main() {
       }
       word_length++;
     }
+
+    return 0;
   }
 
   max_length = 0;

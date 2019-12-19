@@ -14,6 +14,8 @@ int main() {
     celsius = fahr_to_celsius(fahr);
     printf("%4.0f\t%7.1f\n", fahr, celsius);
   }
+
+  return 0;
 }
 
 float fahr_to_celsius(float fahr) {

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-#define MAXWIDTH 1000
+#define MAXWIDTH   1000
+#define LINELENGTH 80
 
 int get_line(char line[], int max_length);
 
@@ -9,10 +10,12 @@ int main() {
   char current_line[MAXWIDTH];
 
   while ((length = get_line(current_line, MAXWIDTH)) > 0) {
-    if (length > 80) {
+    if (length > LINELENGTH) {
       printf("%s", current_line);
     }
   }
+
+  return 0;
 }
 
 int get_line(char line[], int max_length) {
