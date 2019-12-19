@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
+#include <float.h>
 
 int main() {
   printf("min signed char: %d\n", SCHAR_MIN);
@@ -18,5 +19,11 @@ int main() {
   printf("max unsigned short: %ud\n", USHRT_MAX);
   printf("max unsigned int: %ud\n", UINT_MAX);
   printf("max unsigned long: %lud\n", ULONG_MAX);
+
+  printf("min float: %f\n", FLT_MIN);
+  printf("max float: %f\n", FLT_MAX);
+
+  printf("min double: %f\n", DBL_MIN);
+  printf("max double: %f\n", DBL_MAX);
   return 0;
 }
