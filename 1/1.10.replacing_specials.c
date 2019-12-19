@@ -6,16 +6,14 @@ int main() {
   while ((c = getchar()) != EOF) {
     switch (c) {
       case '\t':
-        putchar('\\');
-        putchar('t');
+        printf("\\t");
         break;
       case '\b':
-        putchar('\\');
-        putchar('b');
+        printf("\\b");
         break;
       case '\\':
-        putchar('\\');
-        putchar('\\');
+        printf("\\\\");
+        break;
       default:
         putchar(c);
         break;
