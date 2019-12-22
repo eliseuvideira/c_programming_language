@@ -6,14 +6,14 @@ int main() {
   int i = (int)((unsigned int)~0 >> 1);
   long l = (long)((unsigned long)~0 >> 1);
 
-  printf("%d\n", ~c);
-  printf("%d\n", c);
-  printf("%d\n", ~s);
-  printf("%d\n", s);
-  printf("%d\n", ~i);
-  printf("%d\n", i);
-  printf("%ld\n", ~l);
-  printf("%ld\n", l);
+  printf("min char %d\n", ~c);
+  printf("max char %d\n", c);
+  printf("min short int %d\n", ~s);
+  printf("max short int %d\n", s);
+  printf("min int %d\n", ~i);
+  printf("max int %d\n", i);
+  printf("min long int %ld\n", ~l);
+  printf("max long int %ld\n", l);
   
   return 0; 
 }
