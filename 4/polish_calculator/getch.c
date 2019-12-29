@@ -1,21 +1,29 @@
 #include <stdio.h>
-#define BUFSIZE 100
 
 int getch();
 void ungetch(int);
 
-char buf[BUFSIZE];
-int bufp = 0;
+char buf = 0;
 
 int getch() {
-  return (bufp > 0) ? buf[--bufp] : getchar();
+  int c;
+
+  if (buf != 0) {
+    c = buf;
+  } else {
+    c = getchar();
+  }
+
+  buf = 0;
+
+  return c;
 }
 
 void ungetch(int c) {
-  if (bufp >= BUFSIZE) {
-    printf("ungetch: too many characters\n");
+  if (buf != 0) {
+    printf("ungetch: there's already one character\n");
   } else {
-    buf[bufp++] = c;
+    buf = c;
   }
 }
 
