@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <math.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -38,6 +39,21 @@ int main() {
           x = pop();
           push(y);
           push(x);
+        } else if (strcmp(s, "sin") == 0) {
+          x = pop();
+          push(sin(x));
+        } else if (strcmp(s, "cos") == 0) {
+          x = pop();
+          push(cos(x));
+        } else if (strcmp(s, "pow") == 0) {
+          y = pop();
+          x = pop();
+          push(pow(x, y));
+        } else if (strcmp(s, "exp") == 0) {
+          x = pop();
+          push(exp(x));
+        } else {
+          printf("error: unknow command");
         }
         break;
       case '+':
