@@ -7,8 +7,10 @@
 #define MAXOP 100
 #define NUMBER '0'
 #define NAMED '1'
+#define MAXLINE 100
 
 int get_operator(char s[]);
+int get_line(char line[], int limit);
 
 int main() {
   int type;
@@ -105,7 +107,7 @@ int main() {
           printf("error: no variable to assign to\n");
         }
         break;
-      case 'v':
+      case '|':
         push(last_value);
         break;
       case '\n':
@@ -127,13 +129,21 @@ int main() {
   return 0;
 }
 
+char line[MAXLINE];
+int line_index = 0;
+
 int get_operator(char s[]) {
   int i, c;
 
-  char getch(void);
-  void ungetch(char);
+  if (line[line_index] == '\0') {
+    if (get_line(line, MAXLINE) == 0) {
+      return EOF;
+    } else {
+      line_index = 0;
+    }
+  }
 
-  while ((s[0] = c = getch()) == ' ' || c == '\t');
+  while ((s[0] = c = line[line_index++]) == ' ' || c == '\t');
 
   s[1] = '\0';
   i = 0;
@@ -142,10 +152,10 @@ int get_operator(char s[]) {
   }
 
   if (islower(c)) {
-    while (islower(s[++i] = c = getch()));
+    while (islower(s[++i] = c = line[line_index++]));
     s[i] = '\0';
     if (c != EOF) {
-      ungetch(c);
+      line_index--;
     }
     if (strlen(s) > 1) {
       return NAMED;
@@ -154,24 +164,24 @@ int get_operator(char s[]) {
     }
   }
   if (c == '-') {
-    if (isdigit(c = getch()) || c == '.') {
+    if (isdigit(c = line[line_index++]) || c == '.') {
       s[++i] = c;
     } else {
       if (c != EOF) {
-        ungetch(c);
+        line_index--;
       }
       return '-';
     }
   }
   if (isdigit(c)) {
-    while (isdigit(s[++i] = c = getch()));
+    while (isdigit(s[++i] = c = line[line_index++]));
   }
   if (c == '.') {
-    while (isdigit(s[++i] = c = getch()));
+    while (isdigit(s[++i] = c = line[line_index++]));
   }
   s[i] = '\0';
   if (c != EOF) {
-    ungetch(c);
+    line_index--;
   }
   return NUMBER;
 }
