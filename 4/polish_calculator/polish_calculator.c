@@ -16,6 +16,14 @@ int main() {
   double x, y;
 
   char s[MAXOP];
+  double variables[26];
+  double last_value;
+  char last_variable;
+  int i;
+
+  for (i = 0; i < 26; ++i) {
+    variables[i] = 0.0;
+  }
 
   void push(double);
   double pop(void);
@@ -53,7 +61,7 @@ int main() {
           x = pop();
           push(exp(x));
         } else {
-          printf("error: unknow command");
+          printf("error: unknow command\n");
         }
         break;
       case '+':
@@ -89,11 +97,29 @@ int main() {
           printf("error: division by zero\n");
         }
         break;
+      case '=':
+        pop();
+        if (last_variable >= 'A' && last_variable <= 'Z') {
+          variables[last_variable - 'A'] = pop();
+        } else {
+          printf("error: no variable to assign to\n");
+        }
+        break;
+      case 'v':
+        push(last_value);
+        break;
       case '\n':
-        printf("\t%.8g\n", pop());
+        x = pop();
+        printf("\t%.8g\n", x);
+        last_value = x;
         break;
       default:
-        printf("error: unknown command %s\n", s);
+        if (type >= 'A' && type <= 'Z') {
+          push(variables[type - 'A']);
+          last_variable = type;
+        } else {
+          printf("error: unknown command %s\n", s);
+        }
         break;
     }
   }
