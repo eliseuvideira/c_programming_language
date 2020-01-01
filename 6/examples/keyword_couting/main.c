@@ -7,24 +7,23 @@
 
 extern struct key keytab[32];
 int get_word(char *, int);
-int bin_search(char *, struct key *, int);
+struct key *bin_search(char *, struct key *, int);
 
 int main() {
-  int n;
   char word[MAX_WORD];
+  struct key *p;
   while (get_word(word, MAX_WORD) != EOF) {
     if (isalpha(word[0])) {
-      if ((n = bin_search(word, keytab, NKEYS)) >= 0) {
-        keytab[n].count++;
+      if ((p = bin_search(word, keytab, NKEYS)) != NULL) {
+        p->count++;
       }
     }
   }
-  for (n = 0; n < NKEYS; ++n) {
-    if (keytab[n].count > 0) {
-      printf("%4d %s\n", keytab[n].count, keytab[n].word);
+  for (p = keytab; p < keytab + NKEYS; ++p) {
+    if (p->count > 0) {
+      printf("%4d %s\n", p->count, p->word);
     }
   }
   return 0;
 }
-
 

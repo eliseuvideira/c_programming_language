@@ -1,21 +1,22 @@
+#include <string.h>
 #include "key.h"
 
-int bin_search(char *word, struct key tab[], int n) {
+struct key *bin_search(char *word, struct key tab[], int n) {
   int cond;
-  int low, high, mid;
+  struct key *low = &tab[0];
+  struct key *high = &tab[n];
+  struct key *mid;
   int strcomp(char *, char *);
-  low = 0;
-  high = n - 1;
-  while (low <= high) {
-    mid = (low + high) / 2;
-    if ((cond = strcomp(word, tab[mid].word)) < 0) {
-      high = mid - 1;
+  while (low < high) {
+    mid = low + (high - low) / 2;
+    if ((cond = strcomp(word, mid->word)) < 0) {
+      high = mid;
     } else if (cond > 0) {
       low = mid + 1;
     } else {
       return mid;
     }
   }
-  return -1;
+  return NULL;
 }
 
