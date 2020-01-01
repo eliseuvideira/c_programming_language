@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <math.h>
 
+struct point {
+  int x;
+  int y;
+};
+
 int main() {
-  struct point {
-    int x;
-    int y;
-  };
   double dist, sqrt(double);
 
   struct point point1 = { 320, 200 };
@@ -24,3 +25,11 @@ int main() {
 
   return 0;
 }
+
+struct point create_point(int x, int y) {
+  struct point temp;
+  temp.x = x;
+  temp.y = y;
+  return temp;
+}
+
